@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'kr.entree.spigradle' version '2.2.3'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://projectlombok.org/edge-releases' }
+    maven { url 'https://papermc.io/repo/repository/maven-public/' }
+    maven {
+        url "https://maven.pkg.github.com/milkyway0308/CommandAnnotation"
+        credentials {
+            username 'CuBit0083'
+            password 'cc521cad379de6ff32250770b29b58ecd50ef4a6' }
+    }
+
+}
+
+dependencies {
+    compileOnly 'junit:junit:4.12'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    compileOnly 'org.reflections:reflections:0.9.11'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    implementation 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
+    compileOnly('skywolf46:commandannotation:2.4.1') { changing = true }
+
+}
+
+spigot {
+    softDepends 'CommandAnnotation'
+}
